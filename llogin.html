@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión - Gmail</title>
 
-    <!-- Vincula Google Material Icons para el ícono de Gmail -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <style>
         * {
             margin: 0;
@@ -51,8 +48,7 @@
         }
 
         .gmail-icon {
-            font-size: 60px;  /* Tamaño más grande */
-            color: #1a73e8;
+            width: 60px;  /* Ajusta el tamaño de la imagen */
             margin-bottom: 20px;
             display: block;
             margin-left: auto;
@@ -120,8 +116,8 @@
 <body>
     <div class="login-container">
         <div class="login-box">
-            <!-- Ícono de Gmail, mejorado con un tamaño mayor -->
-            <span class="material-icons gmail-icon">mail</span>
+            <!-- Aquí se carga la imagen del logo de Gmail -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon_%282013-2020%29.svg" alt="Gmail" class="gmail-icon">
             
             <h1>Iniciar sesión</h1>
             <form id="loginForm">
